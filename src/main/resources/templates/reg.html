@@ -1,10 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Login</title>
+    <link rel="stylesheet"
+          href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
-
+<div class="container">
+    <form name='login' th:action="@{/reg}" method='POST'>
+        <table class="table table-borderless">
+            <tr>
+                <td>Имя:</td>
+                <td><input type='text' name='username'></td>
+            </tr>
+            <tr>
+                <td>Пароль:</td>
+                <td><input type='password' name='password'/></td>
+            </tr>
+            <tr>
+                <td colspan='2'><input name="submit" type="submit" value="Зарегестрироваться" class="btn btn-dark"/></td>
+            </tr>
+        </table>
+    </form>
+</div>
 </body>
 </html>
