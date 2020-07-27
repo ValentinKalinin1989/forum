@@ -10,6 +10,7 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "text", length = 1000)
     private String text;
 
     private LocalDate created;

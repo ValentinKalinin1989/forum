@@ -14,8 +14,9 @@ public class Post {
 
     @Column(name = "name", length = 100)
     private String name;
-    @Column(name = "description")
+    @Column(name = "description", length = 1000)
     private String description;
+    
     private LocalDate created;
 
     @OneToMany(mappedBy = "post", targetEntity = Message.class)
