@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+<div class="container">
+    <table>
+        <tr th:text="${post.name}">Имя поста</tr>
+        <tr th:text="${post.description}">Описание почта</tr>
+        <tr th:each="message: ${messages}">
+        <td th:text="${message.text}"></td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>

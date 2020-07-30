@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<form name='login'  th:action="@{/login}" method='POST'>
+<form name='login' th:action="@{/login}" method='POST'>
     <table class="table table-borderless">
         <tr>
             <td>Имя пользователя:</td>
@@ -24,7 +24,7 @@
             <td colspan='2'><input name="submit" type="submit" value="Войти" class="btn btn-dark"/></td>
         </tr>
     </table>
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <a th:href="@{/reg}">Регистрация</a>
 </form>
 
