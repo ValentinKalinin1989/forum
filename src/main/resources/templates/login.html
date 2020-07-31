@@ -4,29 +4,31 @@
     <script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Логин</title>
     <link rel="stylesheet"
           href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
 
-<form name='login' th:action="@{/login}" method='POST'>
-    <table class="table table-borderless">
-        <tr>
-            <td>Имя пользователя:</td>
-            <td><input type='text' name='username'></td>
-        </tr>
-        <tr>
-            <td>Пароль:</td>
-            <td><input type='password' name='password'/></td>
-        </tr>
-        <tr>
-            <td colspan='2'><input name="submit" type="submit" value="Войти" class="btn btn-dark"/></td>
-        </tr>
-    </table>
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-    <a th:href="@{/reg}">Регистрация</a>
-</form>
+<div class="container">
+    <form name='login' th:action="@{/login}" method='post'>
+        <table class="table table-borderless">
+            <tr>
+                <td>Имя пользователя:</td>
+                <td><input type='text' name='username'></td>
+            </tr>
+            <tr>
+                <td>Пароль:</td>
+                <td><input type='password' name='password'/></td>
+            </tr>
+            <tr>
+                <td colspan='2'><input name="submit" type="submit" value="Войти" class="btn btn-dark"/></td>
+            </tr>
+        </table>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <a th:href="@{/reg}">Регистрация</a>
+    </form>
+</div>
 
 </body>
 </html>
