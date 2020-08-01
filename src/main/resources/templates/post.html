@@ -16,6 +16,21 @@
         <tr th:each="message: ${messages}">
         <td th:text="${message.text}"></td>
         </tr>
+        <tr>
+            <form th:action="@{/message_save(id=${post.id})}" method="post">
+                <table>
+                    <tr>
+                        <label for="message">Введите сообщение:</label>
+                    </tr>
+                    <tr>
+                        <textarea rows="5" cols="50" id="message" name="description"></textarea>
+                    </tr>
+                    <tr>
+                        <input type="submit" value="Отправить">
+                    </tr>
+                </table>
+            </form>
+        </tr>
     </table>
 </div>
 </body>
