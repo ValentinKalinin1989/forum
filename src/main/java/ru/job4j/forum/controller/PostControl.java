@@ -34,7 +34,7 @@ public class PostControl {
      * @return post.html
      */
     @GetMapping("/post")
-    public String posts(@RequestParam(value = "id") Long id,
+    public String posts(@RequestParam(value = "id_post") Long id,
                         Model model) {
         Post post = postService.findById(id).orElse(new Post());
         List<Message> messages = post.getMessages();

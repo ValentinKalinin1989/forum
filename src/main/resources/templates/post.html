@@ -17,13 +17,13 @@
         <td th:text="${message.text}"></td>
         </tr>
         <tr>
-            <form th:action="@{/message_save(id=${post.id})}" method="post">
+            <form th:action="@{/message_save(id_post=${post.id})}" method="post">
                 <table>
                     <tr>
-                        <label for="message">Введите сообщение:</label>
+                        <label for="text">Введите сообщение:</label>
                     </tr>
                     <tr>
-                        <textarea rows="5" cols="50" id="message" name="description"></textarea>
+                        <textarea rows="5" cols="50" id="text" name="text"></textarea>
                     </tr>
                     <tr>
                         <input type="submit" value="Отправить">
