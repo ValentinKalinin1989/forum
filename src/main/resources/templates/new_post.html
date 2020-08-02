@@ -9,6 +9,11 @@
           href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
+
+<nav class="navbar navbar-dark bg-primary">
+    <a class="text-white" th:href="@{/}">На главную страницу</a>
+</nav>
+
 <div class="container">
     <form th:action="@{/save_post}" method="post">
         <table class="table table-borderless">

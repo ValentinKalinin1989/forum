@@ -9,8 +9,13 @@
           href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
+
+<nav class="navbar navbar-dark bg-primary">
+    <a class="text-white" th:href="@{/}">На главную страницу</a>
+</nav>
+
 <div class="container">
-    <table>
+    <table class="table table-bordered">
         <tr th:text="${post.name}">Имя поста</tr>
         <tr th:text="${post.description}">Описание поста</tr>
         <tr th:each="message: ${messages}">
