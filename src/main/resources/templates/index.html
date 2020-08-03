@@ -17,16 +17,16 @@
     <a class="nav-link text-white" th:href="@{/create_post}">Добавить новую тему</a>
 </nav>
 
-<div class="container">
+<div class="container-fluid">
     <table class="table table-bordered">
         <tbody>
           <tr th:each="post: ${posts}">
               <table class="table table-bordered">
                   <tr class="table-primary">
-                      <td><a th:href="@{/post(id_post=${post.id})}" th:text="${post.name}">Открыть</a></td>
+                      <td><a class="font-weight-bold" th:href="@{/post(id_post=${post.id})}" th:text="${post.name}">Открыть</a></td>
                   </tr>
                   <tr class="table-info">
-                      <td th:text="${post.description}">Описание поста</td>
+                      <td class="font-italic" th:text="${post.description}">Описание поста</td>
                   </tr>
                   <tr>
                       <td th:text="'Автор: '+ ${post.getUser().getUsername()}">Автор</td>
