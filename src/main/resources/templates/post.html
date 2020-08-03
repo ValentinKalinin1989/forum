@@ -16,31 +16,45 @@
 
 <div class="container-fluid">
     <table class="table table-bordered">
-        <tr class="table-primary span3">
+        <tr class="table-primary">
             <td class="font-weight-bold" th:text="${post.name}">Навание поста</td>
         </tr>
-        <tr class="table-info span3">
+        <tr class="table-info">
             <td class="font-italic" th:text="${post.description}">Описание поста</td>
         </tr>
-        <tr th:each="message: ${messages}" class="span1">
-            <td th:text="'Автор'+${message.user.username}">Автор сообщения</td>
-            <td th:text="${message.text}">Текст сообщения</td>
-            <td th:text="'Дата сообщения'+${message.created}">Дата сообщения</td>
+        <tr>
+            <table class="table table-bordered table-hover">
+                <tr th:each="message: ${messages}">
+                    <td class="font-weight-bolder" th:text="'Автор: '+${message.user.username}">Автор сообщения</td>
+                    <td class="font-weight-normal" th:text="${message.text}">Текст сообщения</td>
+                    <td class="font-italic" th:text="'Дата сообщения: '+${message.created}">Дата сообщения</td>
+                </tr>
+            </table>
         </tr>
         <tr>
-            <form th:action="@{/message_save(id_post=${post.id})}" method="post">
-                <table class="table table-bordered span3">
-                    <tr>
-                        <label for="text">Введите сообщение:</label>
-                    </tr>
-                    <tr>
-                        <textarea rows="5" cols="50" id="text" name="text"></textarea>
-                    </tr>
-                    <tr>
-                        <input type="submit" value="Отправить">
-                    </tr>
-                </table>
-            </form>
+            <table class="table table-borderless">
+                <tr>
+                    <form th:action="@{/message_save(id_post=${post.id})}" method="post">
+                        <table class="table table-borderless">
+                            <tr>
+                                <td>
+                                    <label for="text">Введите сообщение:</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <textarea rows="5" cols="50" id="text" name="text"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="submit" value="Отправить сообщение">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </tr>
+            </table>
         </tr>
     </table>
 </div>
