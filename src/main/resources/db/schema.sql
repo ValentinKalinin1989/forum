@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS post
     id          SERIAL PRIMARY KEY,
     name        VARCHAR(100)  NOT NULL,
     description VARCHAR(1000) NOT NULL,
-    created     DATETIME,
+    created     DATE,
     user_id     INT           NOT NULL REFERENCES users (id)
 );
 
@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS message
 (
     id      SERIAL PRIMARY KEY,
     text    VARCHAR(1000) NOT NULL,
-    created DATETIME,
+    created DATE,
     user_id INT           NOT NULL REFERENCES users (id),
     post_id INT           NOT NULL REFERENCES post (id)
 )

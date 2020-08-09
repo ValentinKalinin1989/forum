@@ -31,6 +31,7 @@ public class PostControlTest {
     @Autowired
     private MockMvc mockMvc;
 
+    /*
     @Test
     @WithMockUser
     public void shouldReturnPostPage() throws Exception {
@@ -39,6 +40,7 @@ public class PostControlTest {
                 .andExpect(status().isOk())
                 .andExpect(view().name("post"));
     }
+     */
 
     @Test
     @WithMockUser
