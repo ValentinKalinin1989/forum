@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/ValentinKalinin1989/forum.svg?branch=master)](https://travis-ci.org/ValentinKalinin1989/forum)
-[![codecov](https://codecov.io/gh/ValentinKalinin1989/forum/branch/master/graph/badge.svg)](https://codecov.io/gh/ValentinKalinin1989/forum)
+
 
 <h1> Форум </h1>
 

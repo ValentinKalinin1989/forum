@@ -12,14 +12,14 @@ import ru.job4j.forum.ForumApplication;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.service.PostService;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 @SpringBootTest(classes = ForumApplication.class)
 @AutoConfigureMockMvc
@@ -30,17 +30,6 @@ public class PostControlTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-    /*
-    @Test
-    @WithMockUser
-    public void shouldReturnPostPage() throws Exception {
-        this.mockMvc.perform(get("/post?id_post=8"))
-                .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(view().name("post"));
-    }
-     */
 
     @Test
     @WithMockUser
