@@ -9,13 +9,10 @@ services:
 before_install:
   - psql -c 'create database forum;' -U postgres
 
-# используем режим обычного пользователя для сборки проекта.
-sudo: false
-
 # после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
 # Здесь используется сторонни сервис https://codecov.io/
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  bash <(curl -s https://codecov.io/bash)
 
 # Отправлять уведомление на почту
 notifications:
@@ -27,4 +24,4 @@ notifications:
 
 env:
   global:
-    - CODECOV_TOKEN="c600861a-a1b7-4a6f-af41-bc9af2c3b382"
+    CODECOV_TOKEN="c600861a-a1b7-4a6f-af41-bc9af2c3b382"
