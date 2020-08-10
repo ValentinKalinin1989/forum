@@ -9,19 +9,24 @@ services:
 before_install:
   - psql -c 'create database forum;' -U postgres
 
+# git strips the wrapper jar file so we have to force its download during the build
+install:
+  - mvn -N io.takari:maven:wrapper
+  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
 # после выполнения сборки запустить скрипт, который будет собирать статистику по JaCoCo
 # Здесь используется сторонни сервис https://codecov.io/
 after_success:
-  bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash)
 
 # Отправлять уведомление на почту
 notifications:
   email:
     recipients:
-      k-valentin-1989@yandex.ru
+      - k-valentin-1989@yandex.ru
     on_success: always # default: change
     on_failure: always # default: always
 
 env:
   global:
-    CODECOV_TOKEN="c600861a-a1b7-4a6f-af41-bc9af2c3b382"
+    - CODECOV_TOKEN="c600861a-a1b7-4a6f-af41-bc9af2c3b382"
