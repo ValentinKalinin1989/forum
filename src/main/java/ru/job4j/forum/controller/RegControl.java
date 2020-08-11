@@ -1,5 +1,6 @@
 package ru.job4j.forum.controller;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +16,8 @@ public class RegControl {
     private final AuthorityService authorityService;
     private final UserService userService;
 
-    public RegControl(PasswordEncoder passwordEncoder, AuthorityService authorityService, UserService userService) {
-        this.passwordEncoder = passwordEncoder;
+    public RegControl(AuthorityService authorityService, UserService userService) {
+        this.passwordEncoder = new BCryptPasswordEncoder();
         this.authorityService = authorityService;
         this.userService = userService;
     }
