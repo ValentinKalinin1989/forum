@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 import javax.sql.DataSource;
 
 @SpringBootApplication
-@ComponentScan({"ru.job4j.forum.*"})
+@ComponentScan({"ru.job4j.*"})
 public class ForumApplication extends SpringBootServletInitializer {
 
     @Override
