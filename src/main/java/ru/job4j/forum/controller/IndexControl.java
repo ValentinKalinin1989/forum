@@ -18,7 +18,7 @@ public class IndexControl {
         this.postService = postService;
     }
 
-    @GetMapping("")
+    @GetMapping(value = {"/", ""})
     public String index(Model model) {
         List<Post> posts = postService.findAll();
         model.addAttribute("posts", posts);

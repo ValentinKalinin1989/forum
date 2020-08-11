@@ -28,7 +28,7 @@ public class MessageControl {
         this.userService = userService;
     }
 
-    @PostMapping("message_save")
+    @PostMapping(value = {"/message_save", "message_save"})
     public String saveMessage(@ModelAttribute Message message,
                               @RequestParam(value = "id_post") Long postId,
                               Model model) {

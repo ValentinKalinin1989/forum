@@ -22,7 +22,7 @@ public class RegControl {
         this.userService = userService;
     }
 
-    @PostMapping("reg")
+    @PostMapping(value = {"/reg", "reg"})
     public String save(@ModelAttribute User user) {
         user.setEnabled(true);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -30,7 +30,7 @@ public class RegControl {
         userService.save(user);
         return "redirect:/login";
     }
-    @GetMapping("reg")
+    @GetMapping(value = {"/reg", "reg"})
     public String reg() {
         return "/reg";
     }
