@@ -33,7 +33,7 @@ public class PostControl {
      * @param model
      * @return post.html
      */
-    @GetMapping("/post")
+    @GetMapping("post")
     public String posts(@RequestParam(value = "id_post") Long id,
                         Model model) {
         Post post = postService.findById(id).orElse(new Post());
@@ -43,7 +43,7 @@ public class PostControl {
         return "post";
     }
 
-    @GetMapping("/create_post")
+    @GetMapping("create_post")
     public String createPost() {
         return "new_post";
     }
@@ -54,7 +54,7 @@ public class PostControl {
      * @param post
      * @return post.html
      */
-    @PostMapping("/save_post")
+    @PostMapping("save_post")
     public String savePost(@ModelAttribute Post post, Model model) {
         post.setCreated(LocalDate.now());
         User user = userService.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
