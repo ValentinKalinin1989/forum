@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginControl {
-    @GetMapping(value = {"/login", "login"})
+    @GetMapping("/login")
     public String loginPane(@RequestParam(value = "error", required = false) String error,
                             @RequestParam(value = "logout", required = false) String logout,
                             Model model) {
@@ -29,7 +29,7 @@ public class LoginControl {
         return "/login";
     }
 
-    @RequestMapping(value = {"/logout", "logout"}, method = RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication != null) {

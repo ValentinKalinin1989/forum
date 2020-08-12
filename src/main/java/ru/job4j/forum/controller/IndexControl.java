@@ -18,11 +18,11 @@ public class IndexControl {
         this.postService = postService;
     }
 
-    @GetMapping(value = {"/", ""})
+    @GetMapping("/")
     public String index(Model model) {
         List<Post> posts = postService.findAll();
         model.addAttribute("posts", posts);
         model.addAttribute("user", SecurityContextHolder.getContext().getAuthentication().getPrincipal());
-        return "index";
+        return "/index";
     }
 }
