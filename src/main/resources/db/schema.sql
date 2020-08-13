@@ -1,10 +1,10 @@
-CREATE TABLE authorities
+CREATE TABLE IF NOT EXISTS authorities
 (
     id        SERIAL PRIMARY KEY,
     authority VARCHAR(50) NOT NULL unique
 );
 
-CREATE TABLE users
+CREATE TABLE IF NOT EXISTS users
 (
     id           SERIAL PRIMARY KEY,
     username     VARCHAR(50)  NOT NULL unique,
