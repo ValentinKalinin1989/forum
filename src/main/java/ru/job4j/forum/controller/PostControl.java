@@ -45,7 +45,7 @@ public class PostControl {
 
     @GetMapping("/create_post")
     public String createPost() {
-        return "new_post";
+        return "/new_post";
     }
 
     /**

@@ -23,6 +23,9 @@ public class Message {
     @JoinColumn(name = "post_id")
     private Post post;
 
+    public Message() {
+    }
+
     public Long getId() {
         return id;
     }
