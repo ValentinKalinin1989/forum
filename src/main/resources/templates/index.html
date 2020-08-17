@@ -17,26 +17,33 @@
     <a class="nav-link text-white" th:href="@{/create_post}">Добавить новую тему</a>
     <a class="text-white" th:href="@{/logout}">Выйти</a>
 </nav>
+<nav class="navbar navbar-expand-sm bg-light">
+    <form class="form-inline" th:action="@{/find_posts}" method="get">
+        <input class="form-control" type="text" placeholder="Введите данные для поиска">
+        <button class="btn btn-success" type="submit">Найти</button>
+    </form>
+</nav>
 
 <div class="container-fluid">
     <table class="table table-bordered">
         <tbody>
-          <tr th:each="post: ${posts}">
-              <table class="table table-bordered">
-                  <tr class="table-primary">
-                      <td><a class="font-weight-bold" th:href="@{/post(id_post=${post.id})}" th:text="${post.name}">Открыть</a></td>
-                  </tr>
-                  <tr class="table-info">
-                      <td class="font-italic" th:text="${post.description}">Описание поста</td>
-                  </tr>
-                  <tr>
-                      <td th:text="'Автор: '+ ${post.getUser().getUsername()}">Автор</td>
-                  </tr>
-                  <tr>
-                      <td th:text="'Дата создания: '+${post.created}">Дата создания</td>
-                  </tr>
-              </table>
-          </tr>
+        <tr th:each="post: ${posts}">
+            <table class="table table-bordered">
+                <tr class="table-primary">
+                    <td><a class="font-weight-bold" th:href="@{/post(id_post=${post.id})}" th:text="${post.name}">Открыть</a>
+                    </td>
+                </tr>
+                <tr class="table-info">
+                    <td class="font-italic" th:text="${post.description}">Описание поста</td>
+                </tr>
+                <tr>
+                    <td th:text="'Автор: '+ ${post.getUser().getUsername()}">Автор</td>
+                </tr>
+                <tr>
+                    <td th:text="'Дата создания: '+${post.created}">Дата создания</td>
+                </tr>
+            </table>
+        </tr>
         </tbody>
     </table>
 </div>
