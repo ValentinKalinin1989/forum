@@ -10,6 +10,13 @@
           href="/webjars/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 
+<script>
+    function search() {
+        let text = $("#textForSearch").val();
+        alert(text);
+    }
+</script>
+
 <body>
 
 <nav class="navbar navbar-expand-sm bg-primary">
@@ -19,8 +26,8 @@
 </nav>
 <nav class="navbar navbar-expand-sm bg-light">
     <form class="form-inline" th:action="@{/find_posts}" method="get">
-        <input class="form-control" type="text" placeholder="Введите данные для поиска">
-        <button class="btn btn-success" type="submit">Найти</button>
+        <input class="form-control" id="textForSearch" type="text" placeholder="Введите данные для поиска">
+        <button class="btn btn-success" type="button" onclick="search()">Найти</button>
     </form>
 </nav>
 
