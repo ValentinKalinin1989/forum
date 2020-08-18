@@ -11,9 +11,14 @@
 </head>
 
 <script>
-    function search() {
+    function searchPost() {
         let text = $("#textForSearch").val();
         alert(text);
+        let patternSpace = /^[\s]+$/;
+        if(patternSpace.test(text)||text.length<3||text.length>100) {
+            alert("Строка нулевая, содержит меньше 3 символов или длиннее 100 символов. Введите значение для поиска снова.");
+            $("#textForSearch").val("");
+        }
     }
 </script>
 
@@ -27,7 +32,7 @@
 <nav class="navbar navbar-expand-sm bg-light">
     <form class="form-inline" th:action="@{/find_posts}" method="get">
         <input class="form-control" id="textForSearch" type="text" placeholder="Введите данные для поиска">
-        <button class="btn btn-success" type="button" onclick="search()">Найти</button>
+        <button class="btn btn-success" type="button" onclick="searchPost()">Найти</button>
     </form>
 </nav>
 
