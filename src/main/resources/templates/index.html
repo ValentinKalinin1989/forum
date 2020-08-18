@@ -15,7 +15,7 @@
         let text = $("#textForSearch").val();
         alert(text);
         let patternSpace = /^[\s]+$/;
-        if(patternSpace.test(text)||text.length<3||text.length>100) {
+        if (patternSpace.test(text) || text.length < 3 || text.length > 100) {
             alert("Строка нулевая, содержит меньше 3 символов или длиннее 100 символов. Введите значение для поиска снова.");
             $("#textForSearch").val("");
         }
