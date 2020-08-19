@@ -62,4 +62,9 @@ public class PostControl {
         postService.save(post);
         return "redirect:/";
     }
+    @GetMapping("/finding_posts")
+    public String findPost(@RequestParam(value = "stringForSearch") String stringForSearch) {
+
+        return "";
+    }
 }

@@ -30,7 +30,7 @@
     <a class="text-white" th:href="@{/logout}">Выйти</a>
 </nav>
 <nav class="navbar navbar-expand-sm bg-light">
-    <form class="form-inline" th:action="@{/find_posts}" method="get">
+    <form class="form-inline">
         <input class="form-control" id="textForSearch" type="text" placeholder="Введите данные для поиска">
         <button class="btn btn-success" type="button" onclick="searchPost()">Найти</button>
     </form>
