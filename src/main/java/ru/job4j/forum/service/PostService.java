@@ -29,4 +29,30 @@ public class PostService {
     public void save(Post post) {
         postRepository.save(post);
     }
+
+    /**
+     * search for text in post name
+     *
+     * @param textForSearch - text for search
+     * @return list of posts
+     */
+    public List<Post> findByNameContaining(String textForSearch) {
+        List<Post> posts = new ArrayList<>();
+        postRepository.findByNameContaining(textForSearch).forEach(posts::add);
+        return posts;
+    }
+
+    /**
+     * search for text in post description
+     *
+     * @param textForSearch - text for search
+     * @return list of posts
+     */
+    public List<Post> findByDescriptionContaining(String textForSearch) {
+        List<Post> posts = new ArrayList<>();
+        postRepository.findByDescriptionContaining(textForSearch).forEach(posts::add);
+        return posts;
+    }
+
+
 }

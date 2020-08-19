@@ -16,7 +16,7 @@ INSERT INTO post(created, description, name, user_id)
 VALUES ('2020-08-08', 'Как лучше форматировать код. Использовать tab или четыре пробела?',
         'tab или 4 проблема?', 2);
 INSERT INTO post(created, description, name, user_id)
-VALUES ('2020-08-08', 'Как лучше форматировать код. Использовать tab или четыре пробела?',
+VALUES ('2020-08-08', 'Создаст ли Шаоми новую секту, которая победит секту любителей айфона?',
         'Шаоми ми 10 - это топ за свои деньги и убийца айфона?', 3);
 
 INSERT INTO message(created, text, post_id, user_id)

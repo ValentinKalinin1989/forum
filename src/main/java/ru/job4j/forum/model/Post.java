@@ -2,6 +2,7 @@ package ru.job4j.forum.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -64,6 +65,13 @@ public class Post {
 
     public void setMessages(List<Message> messages) {
         this.messages = messages;
+    }
+
+    public void addMessage(Message message) {
+        if(messages == null) {
+            messages = new ArrayList<>();
+        }
+        messages.add(message);
     }
 
     public User getUser() {
