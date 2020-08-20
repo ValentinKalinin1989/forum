@@ -1,5 +1,8 @@
 package ru.job4j.forum.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -15,10 +18,12 @@ public class Message {
 
     private LocalDate created;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "post_id")
     private Post post;

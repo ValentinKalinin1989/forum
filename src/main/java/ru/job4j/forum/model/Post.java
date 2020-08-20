@@ -1,5 +1,9 @@
 package ru.job4j.forum.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,12 +21,14 @@ public class Post {
     private String name;
     @Column(name = "description", length = 1000)
     private String description;
-    
+
     private LocalDate created;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "post", targetEntity = Message.class)
     private List<Message> messages;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
@@ -68,7 +74,7 @@ public class Post {
     }
 
     public void addMessage(Message message) {
-        if(messages == null) {
+        if (messages == null) {
             messages = new ArrayList<>();
         }
         messages.add(message);

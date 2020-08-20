@@ -1,5 +1,7 @@
 package ru.job4j.forum.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,9 +26,11 @@ public class User {
 
     private boolean enabled;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "user", targetEntity = Message.class)
     private List<Message> messages;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "user", targetEntity = Post.class)
     private List<Post> posts;
 

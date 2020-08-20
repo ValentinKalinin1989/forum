@@ -1,17 +1,19 @@
 package ru.job4j.forum.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.job4j.forum.model.Message;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.model.User;
+import ru.job4j.forum.service.MessageService;
 import ru.job4j.forum.service.PostService;
+import ru.job4j.forum.service.SearchService;
 import ru.job4j.forum.service.UserService;
+import ru.job4j.forum.tool.TextValidation;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,10 +23,17 @@ public class PostControl {
 
     private final PostService postService;
     private final UserService userService;
+    private final MessageService messageService;
+    private final ObjectMapper objectMapper;
+    private final SearchService searchService;
 
-    public PostControl(PostService postService, UserService userService) {
+
+    public PostControl(PostService postService, UserService userService, MessageService messageService) {
         this.postService = postService;
         this.userService = userService;
+        this.messageService = messageService;
+        this.objectMapper = new ObjectMapper();
+        this.searchService = new SearchService(messageService, postService);
     }
 
     /**
@@ -62,9 +71,17 @@ public class PostControl {
         postService.save(post);
         return "redirect:/";
     }
-    @GetMapping("/finding_posts")
-    public String findPost(@RequestParam(value = "stringForSearch") String stringForSearch) {
 
-        return "";
+    @GetMapping("/finding_posts")
+    @ResponseBody
+    public String findPost(@RequestParam(value = "stringForSearch") String stringForSearch) throws JsonProcessingException {
+        if (TextValidation.checkOnOnlySpaceInStr(stringForSearch)) {
+            return "[error:\"Запрос состоял из одних пробелов\"]";
+        }
+        if (!TextValidation.checkStrLengthBetween3And100(stringForSearch)) {
+            return "[error:\"Запрос имел меньше трех значащих символа или его длина была больше 100 символов\"]";
+        }
+        List<Post> findPosts = searchService.findTextInPostNameDescAndMessage(stringForSearch);
+        return objectMapper.writeValueAsString(findPosts);
     }
 }
