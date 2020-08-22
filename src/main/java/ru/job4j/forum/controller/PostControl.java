@@ -79,7 +79,7 @@ public class PostControl {
             return "{\"error\":\"Запрос состоял из одних пробелов. Ввведите запрос снова.\"}";
         }
         if (!TextValidation.checkStrLengthBetween3And100(stringForSearch)) {
-            return "{\"error\":\"Запрос имел меньше трех значащих символа или его длина была больше 100 символов. Ввведите запрос снова.\"}";
+            return "{\"error\":\"Запрос имел меньше трех значащих символов или его длина была больше 100 символов. Ввведите запрос снова.\"}";
         }
         List<Post> findPosts = searchService.findTextInPostNameDescAndMessage(stringForSearch);
         return objectMapper.writeValueAsString(findPosts);
