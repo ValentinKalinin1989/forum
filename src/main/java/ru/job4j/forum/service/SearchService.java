@@ -38,8 +38,8 @@ public class SearchService {
             Long postId = post.getId();
             tempPost.setId(postId);
             tempPost.setName(post.getName());
-            tempPost.setUser(post.getUser());
             tempPost.setCreated(post.getCreated());
+            tempPost.setDescription(post.getDescription());
             postMap.put(postId, tempPost);
         });
         postService.findByDescriptionContaining(textForSearch).forEach(post -> {
@@ -50,7 +50,6 @@ public class SearchService {
                 Post tempPost = new Post();
                 tempPost.setId(postId);
                 tempPost.setName(post.getName());
-                tempPost.setUser(post.getUser());
                 tempPost.setCreated(post.getCreated());
                 tempPost.setDescription(post.getDescription());
                 postMap.put(postId, tempPost);
@@ -65,7 +64,6 @@ public class SearchService {
                 Post tempPost = new Post();
                 tempPost.setId(postId);
                 tempPost.setName(post.getName());
-                tempPost.setUser(post.getUser());
                 tempPost.setCreated(post.getCreated());
                 tempPost.setDescription(post.getDescription());
                 tempPost.addMessage(message);
