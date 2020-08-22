@@ -13,11 +13,48 @@
 <script>
     function searchPost() {
         let text = $("#textForSearch").val();
-        alert(text);
         let patternSpace = /^[\s]+$/;
         if (patternSpace.test(text) || text.length < 3 || text.length > 100) {
             alert("Строка нулевая, содержит меньше 3 символов или длиннее 100 символов. Введите значение для поиска снова.");
             $("#textForSearch").val("");
+        } else {
+            $.get("/finding_posts", {stringForSearch: text})
+                .done(function (data) {
+                    let json = JSON.parse(data);
+                    if ('error' in json) {
+                        let result = json.error;
+                        $("#post_div").html(result);
+                    } else {
+                        let responseBody = '';
+                        responseBody += '<table class="table table-bordered">';
+                        for (let post in json) {
+                            responseBody += '<table class="table table-bordered"><tbody><tr><table class="table table-bordered">';
+                            <!--Post name with link-->
+                            responseBody += '<tr class="table-primary">';
+                            responseBody += '<td><a href="/post?id_post=' + json[post].id + '">' + json[post].name + '</a>';
+                            responseBody += '</td></tr>';
+                            <!--Post description-->
+                            responseBody += '<tr class="table-info">';
+                            responseBody += '<td class="font-italic">' + json[post].description + '</td>';
+                            responseBody += '</tr>';
+                            <!--Post date-->
+                            responseBody += '<tr>';
+                            responseBody += '<td>Дата создания: ' + json[post].created.year + '-'
+                                + json[post].created.monthValue + '-'
+                                + json[post].created.dayOfMonth + '</td>';
+                            responseBody += '</tr>';
+                            <!--Post message-->
+                            for (let message in json[post].messages) {
+                                responseBody += '<tr><td>';
+                                responseBody += json[post].messages[message].text;
+                                responseBody += '</td></tr>';
+                            }
+                            responseBody += '</table></tr></tbody></table>';
+                        }
+                        responseBody += '</table>';
+                        $("#post_div").html(responseBody);
+                    }
+                })
         }
     }
 </script>
@@ -36,7 +73,7 @@
     </form>
 </nav>
 
-<div class="container-fluid">
+<div class="container-fluid" id="post_div">
     <table class="table table-bordered">
         <tbody>
         <tr th:each="post: ${posts}">

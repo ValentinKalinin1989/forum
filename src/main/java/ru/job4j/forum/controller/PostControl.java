@@ -76,10 +76,10 @@ public class PostControl {
     @ResponseBody
     public String findPost(@RequestParam(value = "stringForSearch") String stringForSearch) throws JsonProcessingException {
         if (TextValidation.checkOnOnlySpaceInStr(stringForSearch)) {
-            return "[error:\"Запрос состоял из одних пробелов\"]";
+            return "{\"error\":\"Запрос состоял из одних пробелов. Ввведите запрос снова.\"}";
         }
         if (!TextValidation.checkStrLengthBetween3And100(stringForSearch)) {
-            return "[error:\"Запрос имел меньше трех значащих символа или его длина была больше 100 символов\"]";
+            return "{\"error\":\"Запрос имел меньше трех значащих символа или его длина была больше 100 символов. Ввведите запрос снова.\"}";
         }
         List<Post> findPosts = searchService.findTextInPostNameDescAndMessage(stringForSearch);
         return objectMapper.writeValueAsString(findPosts);
