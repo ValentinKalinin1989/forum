@@ -23,17 +23,15 @@ public class PostControl {
 
     private final PostService postService;
     private final UserService userService;
-    private final MessageService messageService;
     private final ObjectMapper objectMapper;
     private final SearchService searchService;
 
 
-    public PostControl(PostService postService, UserService userService, MessageService messageService) {
+    public PostControl(PostService postService, UserService userService, MessageService messageService, SearchService searchService) {
         this.postService = postService;
         this.userService = userService;
-        this.messageService = messageService;
         this.objectMapper = new ObjectMapper();
-        this.searchService = new SearchService(messageService, postService);
+        this.searchService = searchService;
     }
 
     /**
