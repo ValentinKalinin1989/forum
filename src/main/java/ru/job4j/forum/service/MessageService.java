@@ -21,6 +21,7 @@ public class MessageService {
 
     /**
      * search for text in message text
+     *
      * @param textForSearch - text for search
      * @return - list of message
      */

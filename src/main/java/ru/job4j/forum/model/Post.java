@@ -1,8 +1,9 @@
 package ru.job4j.forum.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -26,12 +27,23 @@ public class Post {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "post", targetEntity = Message.class)
+    @Cascade(value = {CascadeType.PERSIST})
     private List<Message> messages;
 
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    public Post() {
+    }
+
+    public Post(String name, String description, User user) {
+        this.name = name;
+        this.description = description;
+        this.created = LocalDate.now();
+        this.user = user;
+    }
 
     public Long getId() {
         return id;
