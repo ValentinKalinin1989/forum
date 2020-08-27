@@ -27,7 +27,7 @@ public class PostControl {
     private final SearchService searchService;
 
 
-    public PostControl(PostService postService, UserService userService, MessageService messageService, SearchService searchService) {
+    public PostControl(PostService postService, UserService userService,SearchService searchService) {
         this.postService = postService;
         this.userService = userService;
         this.objectMapper = new ObjectMapper();

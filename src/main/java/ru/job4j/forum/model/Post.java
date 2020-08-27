@@ -38,6 +38,11 @@ public class Post {
     public Post() {
     }
 
+    public Post(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
     public Post(String name, String description, User user) {
         this.name = name;
         this.description = description;

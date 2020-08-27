@@ -10,7 +10,7 @@ class TextValidationTest {
     @Test
     void checkStrLengthBetween3And100() {
         String twoChar = "tg";
-        String threeChar = "1234";
+        String fourChar = "1234";
         String tenChar = "1234567890";
         String hundredOneChar = "1234567890"
                 + "1234567890"
@@ -26,7 +26,7 @@ class TextValidationTest {
         String twoCharAndSpaces = "    tg       ";
 
         boolean firstResult = TextValidation.checkStrLengthBetween3And100(twoChar);
-        boolean secondResult = TextValidation.checkStrLengthBetween3And100(threeChar);
+        boolean secondResult = TextValidation.checkStrLengthBetween3And100(fourChar);
         boolean thirdResult = TextValidation.checkStrLengthBetween3And100(tenChar);
         boolean fourthResult = TextValidation.checkStrLengthBetween3And100(hundredOneChar);
         boolean firthResult = TextValidation.checkStrLengthBetween3And100(hundredOneChar);
